@@ -52,7 +52,7 @@ const MyMap = () => {
     );
   };
 
-  const url = "http://127.0.0.1/true/zip";
+  const url = "http://193.137.172.61:80/true/zip";
 
   const loadFiles = () => {
     const options = {
