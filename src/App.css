@@ -1,38 +1,876 @@
+/*FONTS*/
+@font-face {
+    font-family: "FuturaMdBT";
+    src: url("fonts/FuturaMediumBT.ttf");
+}
+
+@font-face {
+    font-family: "FuturaBold";
+    src: url("fonts/FuturaBold.ttf");
+}
+
+@font-face {
+    font-family: "FuturaBkBT";
+    src: url("fonts/FuturaBookBT.ttf");
+}
+
+@font-face {
+    font-family: "FuturaHkBT";
+    src: url("fonts/FuturaHeavyBT.ttf");
+}
+
+/**/
+
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  height: 4vmin;
-  pointer-events: none;
+    height: 7vh;
+    pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app-logoNavbar {
+    position: absolute;
+    left: 15px;
+    top: 15px;
 }
+
+.sliderContainer {
+    width: 100%;
+}
+
+.sliderBackground3 {
+    background-image: url('imgs/icones/iconesInfo/barra3.png');
+    background-size: cover;
+}
+
+.sliderBackground5 {
+    background-image: url('imgs/icones/iconesInfo/barra5.png');
+    background-size: cover;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    /* background-image: linear-gradient(to right, #ffffff, #024f83);*/
+
+    /*background: #d3d3d3;*/
+    outline: none;
+    border: 2px solid #0A1434;
+    border-radius: 25px;
+    opacity: 1;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 40px;
+    /*width: 35px;
+    height: 35px;*/
+    border: 2px solid #0A1434;
+    /*border-radius: 25px;*/
+    border-radius: 20px;
+    background: #06234A;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #06234A;
+    cursor: pointer;
+}
+
+html, body, #root, #appContainer, #appContainer2 {
+    height: 100%;
+    font-family: "FuturaMdBT";
+}
+
+body {
+    background-color: #eef4f7;
+}
+
+.graficoTeste {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.imagensTimestack {
+    width: -webkit-fill-available;
+}
+
+#BathymetryPage {
+    /* width: 100vw;*/
+
+}
+
+.btnWaves {
+    width: 100px;
+    height: 60px;
+}
+
 
 .App-header {
-  background-color: #282c34;
-  min-height: 5vh;
+    /*  background-color: #282c34;*/
+    background-image: linear-gradient(to bottom right, #005086, #091233);
+    height: 11vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*font-size: calc(10px + 2vmin);*/
+    color: white;
+    position: fixed;
+    z-index: 19000;
+    width: 100%;
+}
+
+.divSelect1 {
+    color: white !important;
+    border-bottom: none !important;
+    font-family: "FuturaHkBT" !important;
+}
+
+.divSelectBold {
+    padding-left: 0 !important;
+}
+
+.optionSelect {
+    color: #005086 !important;
+}
+
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(233, 236, 239) !important;
+    opacity: 0.8; /* Firefox */
+}
+
+.navbar {
+    background-color: #005086 !important;
+    color: white !important;
+}
+
+.App-footer {
+    /*background-color: #282c34;*/
+    background-image: linear-gradient(to bottom right, #005086, #091233);
+    height: 11vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    position: fixed;
+    z-index: 20;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.navbarInfo {
+    background-color: #005086 !important;
+    position: fixed;
+    z-index: 10000;
+    top: 11vh !important;
+    width: 100%;
+    font-size: 1rem;
+
+}
+
+.linkNavbar {
+    color: #eef4f7 !important;
+    font-family: 'FuturaBkBT' !important;
+    text-decoration: none;
+    text-align: center;
+
+}
+
+.activeNavbar {
+    font-family: 'FuturaMdBT' !important;
+    color: #DFBC79 !important;
+    border-bottom: 5px solid #DFBC79 !important;
+    padding-bottom: 0 !important;
+}
+
+.valueInfo {
+    font-family: 'FuturaHkBT' !important;
+    font-size: 20px;
+    margin-bottom: auto;
+    margin-top: auto;
+    /*width: 100px;*/
+}
+
+.container {
+    padding-left: 6px !important;
+}
+
+.valueInfoExtra {
+    font-family: 'FuturaHkBT' !important;
+    font-size: 18px;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.iconInfo {
+    height: 35px;
+    width: auto;
+}
+
+.extraText {
+    font-family: 'FuturaBkBT' !important;
+    font-size: 18px;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+
+.sliderText {
+    font-family: 'FuturaBkBT' !important;
+    font-size: 16px;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.SubTitles {
+    color: #06234A !important;
+    font-size: 22px;
+    font-family: 'FuturaBkBT';
+}
+
+.testeDiv {
+    background-color: #091233;
+    height: 30px;
+    width: 30px;
+    z-index: 1000;
+}
+
+.App-btn-menu {
+    border: none;
+    background-color: transparent;
+    margin: auto;
+    display: block;
+
+}
+
+.App-btn-menu:focus {
+    outline-color: #091233;
+
+}
+
+
+.App-menu-logo {
+    height: 9vh !important;
+}
+
+.testeIcon {
+    height: 48px;
+    width: 35px;
+    /*background-color: red;*/
+    background-image: url("imgs/icones/PinFigueira.png");
+    background-repeat: no-repeat;
+    background-size: 35px 48px;
+
+}
+
+.testeIconEriceira {
+    height: 65px;
+    width: 65px;
+    /*background-color: red;*/
+    background-image: url("imgs/icones/PinEriceira.png");
+    background-repeat: no-repeat;
+    background-size: 65px 65px;
+
+}
+
+.zClass {
+    z-index: 1000;
+}
+
+.ol-attribution.ol-unselectable.ol-control {
+    visibility: hidden;
+}
+
+.ol-zoom.ol-unselectable.ol-control {
+    top: inherit !important;
+    bottom: 1rem;
+    left: 1rem;
+}
+
+.ol-touch .ol-control button {
+    font-size: 1.4rem !important;
+}
+
+.testeIconFigueira {
+    height: 75px;
+    width: 150px;
+    /*background-color: red;*/
+    background-image: url("imgs/icones/PinFigueira.png");
+    background-repeat: no-repeat;
+    background-size: 150px 75px;
+
+}
+
+.testeIconFigueiraPerfil1 {
+    height: 40px;
+    width: 40px;
+    /*background-color: red;*/
+    background-image: url("imgs/icones/right-arrow.png");
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+}
+
+
+
+.dangerSign {
+    height: 70px;
+    position: fixed;
+    bottom: 90px;
+    right: 10px;
+    z-index: 1000 !important;
+}
+
+.slider3Legenda1 {
+    padding-left: 0px;
+}
+
+.slider3Legenda2 {
+    text-align: center;
+}
+
+.slider3Legenda3 {
+    text-align: end;
+    padding-right: 0px;
+}
+
+.slider5Legenda1 {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.slider5Legenda2 {
+    padding-left: 0px;
+    text-align: center;
+}
+
+.slider5Legenda3 {
+    text-align: center;
+}
+
+.slider5Legenda4 {
+    text-align: center;
+    padding-right: 0px;
+}
+
+.slider5Legenda5 {
+    padding-left: 0px;
+    text-align: end;
+    padding-right: 0px;
+}
+
+.btnPlace {
+    background-color: #005086 !important;
+    width: 100vw;
+    border: none;
+    font-size: 16px;
+    border-radius: 0px;
+    text-align: left;
+    padding-left: 24px;
+    box-shadow: none !important;
+}
+
+.dropdown-menu {
+    width: 100vw !important;
+    position: absolute;
+    left: 3px !important;
+    right: 0px !important;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    border-radius: 0;
+    font-size: 16px;
+}
+
+.dropdown-toggle-split::after {
+    margin-left: 8px !important;
+}
+
+.App-btn-menu {
+    box-shadow: none !important;
+}
+
+#perfil {
+    height: 7vh;
+    width: 7vh;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 3px;
+}
+
+#perfilEdit {
+    height: 15vh;
+    width: 15vh;
+    margin: auto;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 3px;
+}
+
+.text-align-initial {
+    text-align: initial;
+}
+
+.btnTypeUser {
+    background-color: transparent;
+    border: none;
+    vertical-align: text-bottom;
+}
+
+
+.btnTypeUser:hover, .btnTypeUser:active, .btnTypeUser:focus {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none;
+}
+
+
+#perfil2 {
+    height: 10vh;
+    width: 10vh;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 3px;
+    margin: auto;
+    position: relative;
+    right: 90px;
+}
+
+
+.align-text-center {
+    text-align: center;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.col-profile {
+    text-align: right;
+}
+
+.classDropdown-menu {
+    /*background-color: rgba(255,255,255,0.7);*/
+    left: 0px !important;
+    width: 60px !important;
+    text-align: right;
+    border-radius: 10px 0px 10px 10px !important;
+    border: 1px solid #005086;
+    background-color: #eef4f7 !important;
+}
+
+.linkLogo {
+    /*position: absolute;
+    left: 0px;*/
+    height: 7vh;
+    width: 7vh;
+}
+
+#titlePage {
+    color: #EEF4F7;
+    font-size: 1.3rem;
+}
+
+.titlePageCol {
+    text-align: center;
+}
+
+.editProfileClass {
+    position: absolute;
+    top: 12vh !important;
+    width: 100%;
+}
+
+.editProfileForm {
+    color: #005086 !important;
+}
+
+.voltarBtn {
+    /*width: 40px;
+    height: 40px;*/
+    width: 36px;
+    height: 36px;
+    z-index: 100;
+    border-color: transparent !important;
+}
+
+/*-------SIDENAV-----*/
+/* The side navigation menu */
+.sidenav {
+    color: #005086 !important;
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 200000; /* Stay on top */
+    top: 0; /* Stay at the top */
+    right: 0;
+    background-color: white;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    /*padding-top: 60px;*/ /* Place content 60px from the top */
+    transition: 0.2s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 8px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #091233;
+    display: block;
+    transition: 0.2s;
+    text-align: center;
+}
+
+.topsideNav {
+    /*background-image: linear-gradient(to top right, #005086, #091233);*/
+    background-color: #eef4f7;
+    border-bottom: 3px solid #005086;
+    border-radius: 0px 0px 10px 10px;
+    padding-top: 60px;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #005086;
+    font-family: 'FuturaHkBT';
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    font-size: 36px;
+    color: #005086 !important;
+    /*margin-left: 50px;*/
+}
+
+
+#fullscreen {
+    display: none;
+    /* width: 100%;*/
+    width: calc(100% - 250px);
+    height: 100%;
+    position: fixed;
+    z-index: 19900;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: 0.1s;
+    /*  background-color: darkred;*/
+
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+/*-------SIDENAV-----*/
+
+
+#backBtn {
+    background: url("imgs/icones/backBtn.png") no-repeat !important;
+    background-size: 35px !important;
+    position: fixed !important;
+    top: 12vh !important;
+    /*left: 15px!important;*/
+}
+
+#backBtnInfoGeral {
+    background: url("imgs/icones/backBtn.png") no-repeat !important;
+    background-size: 35px !important;
+    /* left: 15px!important;*/
+}
+
+#infoBtn {
+    background: url("imgs/icones/infoBtn.png") no-repeat !important;
+    background-size: 35px !important;
+    position: fixed !important;
+    top: 12vh !important;
+    right: 0 !important;
+    margin-right: 4rem;
+}
+
+#camBtn {
+    background: url("imgs/icones/camVideoBtn.png") no-repeat !important;
+    background-size: 35px !important;
+    position: fixed !important;
+    top: 12vh !important;
+    right: 0 !important;
+}
+
+.mainContainerInfo {
+    width: 100%;
+    top: 17vh !important;
+}
+
+.mainContainerCamera {
+    width: 100%;
+    top: 12vh !important;
+}
+
+.modalLogout {
+    z-index: 300000;
+}
+
+.borderNormal {
+    border-color: #c47723;
+}
+
+.borderAcademico {
+    border-color: #44741c;
+}
+
+.borderProfissional {
+    border-color: #007b7b;
+}
+
+.colorAmateur {
+    color: #c47723;
+}
+
+.colorAcademico {
+    color: #44741c;
+}
+
+.colorProfissional {
+    color: #007b7b;
+}
+
+.navigationMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*
+#loginLogo {
+  justify-content: center;
   display: flex;
-  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  justify-content: flex-start;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+*/
+
+.logoLogin {
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+    margin-bottom: 20px;
+    /*  position: absolute;
+      top:50px;*/
 }
 
-.App-link {
-  color: #61dafb;
+#containerLogin {
+    width: 100%;
+    min-height: 100%;
+    /*height: 100%;*/
+
+    position: relative;
+    color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.backgroundGradiente {
+    background-image: linear-gradient(to top right, #005086, #091233);
 }
+
+.backgroundResponsiveHeight {
+    height: -webkit-fill-available;
+}
+
+.borderSelect {
+    border: 1px solid #ced4da !important;
+}
+
+
+.row {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.iconsLogin {
+    width: 20px;
+}
+
+.input-group-text {
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.form-control {
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    color: white;
+}
+
+.form-control::placeholder {
+    color: white;
+}
+
+.form-control:focus, .form-control:hover {
+    background-color: transparent;
+    color: white;
+    box-shadow: none;
+}
+
+.placeEditProfile:focus, .placeEditProfile:hover {
+    color: #005086 !important;
+
+}
+
+.form-control::placeholder {
+    color: white;
+}
+
+.editProfileForm {
+    color: #005086 !important;
+}
+
+.editProfileForm::placeholder {
+    color: #005086 !important;
+}
+
+.profileEdit {
+    border-bottom: 1px solid #091233;
+}
+
+.profileEditSelect {
+    border: 1px solid #091233 !important;
+}
+
+.textEditProfile {
+    text-align: initial;
+}
+
+.modal {
+    top: 13vh;
+}
+
+.text-center {
+    display: block;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.btnLogin {
+    width: 150px;
+    border-color: white !important;
+    color: white !important;
+}
+
+.btnLogin:focus, .btnLogin:hover, button.btnLogin.btn.btn-outline-primary:active {
+    background-color: white !important;
+    color: #005086 !important;
+    border-box: none;
+}
+
+.specialBtnLogin {
+    background-color: white !important;
+    color: #005086 !important;
+    border-box: none;
+}
+
+.btnEditProfile {
+    background-color: #06234A !important;
+    border-color: #06234A !important;
+}
+
+.btnUploadImage {
+    background-color: #06234A !important;
+    border-color: #06234A !important;
+}
+
+.btnEditProfile:focus, .btnEditProfile:hover, button.btnEditProfile.btn.btn-outline-primary:active {
+    background-color: white !important;
+    color: #06234A !important;
+}
+
+#BathymetryPage {
+    position: absolute;
+    top: 11vh;
+    padding: 10px;
+}
+
+#settingsPage {
+    position: absolute;
+    top: 11vh;
+    padding: 10px;
+}
+
+@media (min-width: 375px) {
+    .cameraResponsive{
+        min-height: 180px;
+    }
+}
+
+@media (min-width: 475px) {
+    .cameraResponsive{
+        min-height: 210px;
+    }
+}
+
+@media (min-width: 576px) {
+    .cameraResponsive{
+        min-height: 260px;
+    }
+}
+
+@media (min-width: 768px) {
+    .cameraResponsive{
+        min-height: 360px;
+    }
+}
+
+@media (min-width: 992px) {
+    .cameraResponsive{
+        min-height: 440px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .cameraResponsive{
+        min-height: 535px;
+    }
+}
+
+
+#toggleBtnNMM , #toggleBtnZH {
+    background-color: transparent !important;
+    border-color: #06234A !important;
+    color: #06234A!important;
+    box-shadow: none!important;
+}
+
+#toggleBtnNMM.active , #toggleBtnZH.active {
+    background-color: #06234A !important;
+    color: white!important;
+}
+

@@ -6,6 +6,7 @@ import {
   Marker,
   Popup,
 } from "react-leaflet";
+
 import "leaflet/dist/leaflet.css";
 // Retrieve all Leaflet Default Icon options from CSS, in particular all icon images URL's, to improve compatibility with bundlers and frameworks that modify URL's in CSS.
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
@@ -15,8 +16,17 @@ import { TileProviders } from "../lib/TileProviders";
 import colorbrewer from "colorbrewer";
 const fs = require("fs");
 
-const MyMap = () => {
-  const center = [40.1446, -8.8583];
+const MyMap = (props) => {
+  const city=props.city;
+  let center = [40.39, -8.8583];
+  let posFigueira = [40.1499, -8.8593];
+  let posEriceira = [38.9629, -9.4211];
+  if(city=="Figueira"){
+    center = posFigueira;
+  }else{
+    center = posEriceira;
+  }
+ 
   const zoom = 14;
 
   const [geodata, setGeodata] = useState(null);
@@ -103,7 +113,7 @@ const MyMap = () => {
       opacity: 1,
       fillOpacity: 0.7,
       radius: 6,
-      weight: 2,
+      weight: 3,
       dashArray: "2",
       // from http://stackoverflow.com/a/15710692
       color: colorbrewer.Spectral[11][Math.ceil(Math.random() * 1000) % 11],
@@ -120,15 +130,6 @@ const MyMap = () => {
           onEachFeature={onEachFeature}
         />
       </Overlay>
-    );
-  }
-
-  function MapPlaceholder() {
-    return (
-      <p>
-        Map of Greece.{" "}
-        <noscript>You need to enable JavaScript to see this map.</noscript>
-      </p>
     );
   }
 
@@ -152,9 +153,9 @@ const MyMap = () => {
         center={center}
         zoom={zoom}
         scrollWheelZoom={true}
-        style={{ width: "100vw", height: "91vh" }}
+        style={{ width: "100vw", height: "100vh" }}
         whenCreated={setMap}
-        placeholder={<MapPlaceholder />}
+        
       >
         <LayersControl position="topright">
           {Object.keys(TileProviders).map((providerName, index) => {
@@ -302,10 +303,27 @@ const MyMap = () => {
           draggable={true}
           animate={true}
         >
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
         </Marker>
+        <Marker
+          id="markerEriceira"
+          position={posFigueira}
+          eventHandlers={{
+            click: () => {
+              console.log('change zoom to Figueira');
+              // window.location.href = "/homeEriceira";
+            },
+          }}
+        ></Marker>
+        <Marker
+          id="markerEriceira"
+          position={posEriceira}
+          eventHandlers={{
+            click: () => {
+              console.log('change zoom to Ericeira');
+              // window.location.href = "/homeEriceira";
+            },
+          }}
+        ></Marker>
       </MapContainer>
     </>
   );
