@@ -1,15 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
 import MyMap from './components/MyMap';
+import Camara from './components/Camara';
 import HomeMap from './components/HomeMap';
 import Header from './components/Header';
+import "bootstrap/dist/css/bootstrap.min.css";
+import NavbarInfoGeral from './components/NavbarInfoGeral';
 
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
-  useLocation
+  useLocation, useParams
 } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
 
@@ -17,10 +20,11 @@ import { useEffect, useState, useCallback } from "react";
 
 function App() {
   let showHeader2 = false;
-  const headerElement = <Header pageName="Home" />;
+  let [rootname, setRootname]=useState(useLocation().pathname);
+  const headerElement = <Header pageName={rootname} />;
   const location = useLocation().pathname;
   if (!(location.includes("login") || location.includes("register"))) {
-    console.log("nao é login nem registo");
+    //console.log("nao é login nem registo");
     showHeader2 = true;
   }
 
@@ -29,11 +33,19 @@ function App() {
     <div id="appContainer2">
       {showHeader2 && headerElement}
       <Switch>
-        <Route path="">
-          <MyMap />
+        <Route path="/camaraFigueira" >
+          <Camara city="Figueira" /> 
         </Route>
-        
-        
+        <Route path="/camaraEriceira" >
+          <Camara city="Ericeira" /> 
+        </Route>
+        <Route path="/InfoGeralFigueira_Waves" >
+          <NavbarInfoGeral city="figueira" currentTab="waves"/>
+        </Route>  
+
+        <Route path="/">
+          <MyMap />
+        </Route>    
       </Switch>
     </div>
   );

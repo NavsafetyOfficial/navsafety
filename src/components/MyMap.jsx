@@ -62,13 +62,10 @@ const MyMap = (props) => {
     );
   };
 
-  
-
   const loadFiles = (local) => {
     const url = "http://193.137.172.61:80/true/zip";
 
-    if(local=="Figueira"){
-
+    if (local == "Figueira") {
     }
     const options = {
       method: "POST",
@@ -165,43 +162,48 @@ const MyMap = (props) => {
       <Button
         id="infoBtn"
         className="voltarBtn"
-        href="/InfoGeralFigueira_Waves/"
+        href={city2 == "Figueira" ? "/InfoGeralFigueira_Waves/" : "/InfoGeralEriceira_Waves/"}
       ></Button>
-      <Button id="camBtn" className="voltarBtn" href="/cameraFigueira"></Button>
+      <Button
+        id="camBtn"
+        className="voltarBtn"
+        href={city2 == "Figueira" ? "/camaraFigueira" : "/camaraEriceira"}
+      ></Button>
     </div>
   );
 
   let markers = (
     <>
-    <Marker
-      class="markerMap"
-      id="markerFigueira"
-      position={posFigueira}
-      eventHandlers={{
-        click: () => {
-          console.log("change zoom to Figueira");
-          setCity("Figueira");
-          // window.location.href = "/homeEriceira";
-        },
-      }}></Marker>
       <Marker
-          id="markerEriceira"
-          position={posEriceira}
-          eventHandlers={{
-            click: () => {
-              setCity("Ericeira");
+        class="markerMap"
+        id="markerFigueira"
+        position={posFigueira}
+        eventHandlers={{
+          click: () => {
+            console.log("change zoom to Figueira");
+            setCity("Figueira");
+            // window.location.href = "/homeEriceira";
+          },
+        }}
+      ></Marker>
+      <Marker
+        id="markerEriceira"
+        position={posEriceira}
+        eventHandlers={{
+          click: () => {
+            setCity("Ericeira");
 
-              // window.location.href = "/homeEriceira";
-            },
-          }}
-        ></Marker>
-        </>
+            // window.location.href = "/homeEriceira";
+          },
+        }}
+      ></Marker>
+    </>
   );
 
   const setCity = useCallback(
     (city) => {
       console.log(city);
-      
+
       if (city == "Figueira") {
         setCity2("Figueira");
         map.setMinZoom(13);
@@ -225,7 +227,6 @@ const MyMap = (props) => {
         map.setMinZoom(7);
         map.setMaxZoom(14);
         map.setView(center, 7);
-        
       }
     },
     [map]
@@ -269,8 +270,6 @@ const MyMap = (props) => {
         >
         </Marker> */}
         {city2 ? null : markers}
-
-        
       </MapContainer>
     </>
   );
