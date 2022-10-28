@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import {
   MapContainer,
   TileLayer,
@@ -14,23 +15,22 @@ import "leaflet-defaulticon-compatibility";
 import { ShapeFile } from "./ShapeFile";
 import { TileProviders } from "../lib/TileProviders";
 import colorbrewer from "colorbrewer";
+import { Button } from "react-bootstrap";
 const fs = require("fs");
 
 const MyMap = (props) => {
-  const city=props.city;
+  let showOptionsCity = true;
   let center = [40.39, -8.8583];
-  let posFigueira = [40.1499, -8.8593];
+  let posFigueira = [40.1451, -8.8712];
   let posEriceira = [38.9629, -9.4211];
-  if(city=="Figueira"){
-    center = posFigueira;
-  }else{
-    center = posEriceira;
-  }
- 
-  const zoom = 14;
+  let zoom = 7;
+  let maxZoom = 12;
+
+  // let [zoom, setZoom] = useState(7);
 
   const [geodata, setGeodata] = useState(null);
   const [map, setMap] = useState(null);
+  const [city2, setCity2] = useState(null);
   const [position, setPosition] = useState(
     map ? map.getCenter() : { lat: center[0], lng: center[1] }
   );
@@ -62,9 +62,14 @@ const MyMap = (props) => {
     );
   };
 
-  const url = "http://193.137.172.61:80/true/zip";
+  
 
-  const loadFiles = () => {
+  const loadFiles = (local) => {
+    const url = "http://193.137.172.61:80/true/zip";
+
+    if(local=="Figueira"){
+
+    }
     const options = {
       method: "POST",
       headers: {
@@ -132,198 +137,140 @@ const MyMap = (props) => {
       </Overlay>
     );
   }
+  let infoAPI = {
+    varIdx1: 0,
+    varFullName1: "OpenStreetMap Mapnik",
+    varUrl1: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    varAttribution1:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  };
+  let BaseLayers = (
+    <BaseLayer checked key={infoAPI.varIdx1} name={infoAPI.varFullName1}>
+      <TileLayer url={infoAPI.varUrl1} attribution={infoAPI.varAttribution1} />
+    </BaseLayer>
+  );
+  let TileLayers = (
+    <TileLayer url={infoAPI.varUrl1} attribution={infoAPI.varAttribution1} />
+  );
+
+  let menuCity = (
+    <div id="menuCity">
+      <Button
+        id="backBtn"
+        className="voltarBtn"
+        onClick={() => {
+          setCity();
+        }}
+      ></Button>
+      <Button
+        id="infoBtn"
+        className="voltarBtn"
+        href="/InfoGeralFigueira_Waves/"
+      ></Button>
+      <Button id="camBtn" className="voltarBtn" href="/cameraFigueira"></Button>
+    </div>
+  );
+
+  let markers = (
+    <>
+    <Marker
+      class="markerMap"
+      id="markerFigueira"
+      position={posFigueira}
+      eventHandlers={{
+        click: () => {
+          console.log("change zoom to Figueira");
+          setCity("Figueira");
+          // window.location.href = "/homeEriceira";
+        },
+      }}></Marker>
+      <Marker
+          id="markerEriceira"
+          position={posEriceira}
+          eventHandlers={{
+            click: () => {
+              setCity("Ericeira");
+
+              // window.location.href = "/homeEriceira";
+            },
+          }}
+        ></Marker>
+        </>
+  );
+
+  const setCity = useCallback(
+    (city) => {
+      console.log(city);
+      
+      if (city == "Figueira") {
+        setCity2("Figueira");
+        map.setMinZoom(13);
+        map.setMaxZoom(18);
+        map.setView(posFigueira, 14);
+        if (geodata == null) {
+          //ir com parametro Figueira
+          loadFiles("Figueira");
+        }
+      } else if (city == "Ericeira") {
+        setCity2("Ericeira");
+        map.setMinZoom(13);
+        map.setMaxZoom(18);
+        map.setView(posEriceira, 14);
+        if (geodata == null) {
+          //ir com parametro Figueira
+          loadFiles("Ericeira");
+        }
+      } else {
+        setCity2(null);
+        map.setMinZoom(7);
+        map.setMaxZoom(14);
+        map.setView(center, 7);
+        
+      }
+    },
+    [map]
+  );
 
   useEffect(() => {
-    if (geodata == null) {
-      loadFiles();
-    }
+    //se quiser ter um ficheiro já carregado por defeito, este codigo tem de estar ativo
+    // if (geodata == null) {
+    //   loadFiles();
+    // }
   });
 
   return (
     <>
-      {map ? (
+      {/* {map ? (
         <DisplayPosition
           map={map}
           position={position}
           setPosition={setPosition}
         />
-      ) : null}
+      ) : null} */}
+      {city2 ? menuCity : null}
 
       <MapContainer
         center={center}
         zoom={zoom}
+        maxZoom={maxZoom}
         scrollWheelZoom={true}
         style={{ width: "100vw", height: "100vh" }}
         whenCreated={setMap}
-        
       >
         <LayersControl position="topright">
-          {Object.keys(TileProviders).map((providerName, index) => {
-            const tileProvider = TileProviders[providerName];
-            var tileUrl = tileProvider.url;
-            const options = tileProvider.options;
-
-            var apiKey = false;
-
-            if (
-              tileProvider.url &&
-              options.attribution &&
-              providerName !== "MtbMap" &&
-              !options.bounds &&
-              !options.subdomains
-            ) {
-              const providerAttribution = options.attribution;
-
-              if (tileUrl.search("{ext}") > -1) {
-                let ext = options.ext !== "" ? options.ext : "none";
-                tileUrl = tileUrl.replace("{ext}", ext);
-              }
-              if (options.id && tileUrl.search("{id}") > -1) {
-                tileUrl = tileUrl.replace("{id}", options.id);
-              }
-              if (options.subdomains) {
-                tileUrl = tileUrl.replace("{s}", options.subdomains[1]);
-              }
-              if (tileUrl.search("{apikey}") > -1) {
-                apiKey = options.apikey !== "" ? options.apikey : "none";
-                tileUrl = tileUrl.replace("{apikey}", apiKey);
-              } else if (tileUrl.search("{key}") > -1) {
-                apiKey = options.key !== "" ? options.key : "none";
-                tileUrl = tileUrl.replace("{apikey}", apiKey);
-              } else if (tileUrl.search("{apiKey}") > -1) {
-                apiKey = options.apiKey !== "" ? options.apiKey : "none";
-                tileUrl = tileUrl.replace("{apiKey}", apiKey);
-              } else if (tileUrl.search("{accessToken}") > -1) {
-                apiKey =
-                  options.accessToken !== "" ? options.accessToken : "none";
-                tileUrl = tileUrl.replace("{accessToken}", apiKey);
-              }
-
-              // console.log(providerName + ":" + tileUrl)
-
-              if (tileProvider.variants) {
-                const variants = tileProvider.variants;
-
-                return Object.keys(variants).map((varName, varIdx) => {
-                  const varFullName = providerName + " " + varName;
-                  const variant = variants[varName];
-                  const varOpts =
-                    variant.options && typeof variant.options === "object"
-                      ? variant.options
-                      : undefined;
-                  const varAttribution =
-                    varOpts && varOpts.attribution
-                      ? varOpts.attribution
-                      : providerAttribution;
-                  var varUrl = variant.url ? variant.url : tileUrl;
-
-                  // console.log( " -- varFullName: " + varFullName + ": " + varUrl);
-
-                  if (varUrl.search("{variant}") > -1) {
-                    if (
-                      typeof variant === "object" &&
-                      varOpts &&
-                      varOpts.variant
-                    ) {
-                      // console.log('variant: ', varOpts.variant);
-                      varUrl = varUrl.replace("{variant}", varOpts.variant);
-                    } else if (typeof variant !== "object") {
-                      varUrl = varUrl.replace("{variant}", variant);
-                    } else {
-                      varUrl = varUrl.replace("{variant}", varName);
-                    }
-                  }
-                  if (varUrl.search("{ext}") > -1) {
-                    let ext = options.ext !== "" ? options.ext : "png";
-                    ext =
-                      variant.options && variant.options.ext !== ""
-                        ? variant.options.ext
-                        : "png";
-                    varUrl = varUrl.replace("{ext}", ext);
-                  }
-                  if (options.subdomains) {
-                    varUrl = varUrl.replace("{s}", options.subdomains[1]);
-                  }
-                  if (varUrl.search("{apikey}") > -1) {
-                    apiKey = options.apikey !== "" ? options.apikey : "none";
-                    varUrl = varUrl.replace("{apikey}", apiKey);
-                  } else if (varUrl.search("{key}") > -1) {
-                    apiKey = options.key !== "" ? options.key : "none";
-                    varUrl = varUrl.replace("{key}", apiKey);
-                  } else if (varUrl.search("{apiKey}") > -1) {
-                    apiKey = options.apiKey !== "" ? options.apiKey : "none";
-                    varUrl = varUrl.replace("{apiKey}", apiKey);
-                  } else if (varUrl.search("{accessToken}") > -1) {
-                    apiKey =
-                      options.accessToken !== "" ? options.accessToken : "none";
-                    varUrl = varUrl.replace("{accessToken}", apiKey);
-                  }
-
-                  // console.log( " --- varUrl: ", varUrl);
-
-                  if (!apiKey || apiKey !== "none") {
-                    return (
-                      <BaseLayer
-                        checked={
-                          providerName === "OpenStreetMap" &&
-                          varName === "Mapnik"
-                        }
-                        key={varIdx}
-                        name={varFullName}
-                      >
-                        <TileLayer url={varUrl} attribution={varAttribution} />
-                      </BaseLayer>
-                    );
-                  } else {
-                    return (
-                      <BaseLayer key={varIdx} name={varFullName}></BaseLayer>
-                    );
-                  }
-                });
-              } else {
-                if (!apiKey || apiKey !== "none") {
-                  return (
-                    <BaseLayer key={index} name={providerName}>
-                      <TileLayer
-                        url={tileProvider.url}
-                        attribution={providerAttribution}
-                      />
-                    </BaseLayer>
-                  );
-                }
-              }
-            }
-          })}
-
+          {BaseLayers}
           {ShapeLayers}
         </LayersControl>
 
-        <Marker
+        {/* <Marker
           position={map !== null ? map.getCenter() : center}
           draggable={true}
           animate={true}
         >
-        </Marker>
-        <Marker
-          id="markerEriceira"
-          position={posFigueira}
-          eventHandlers={{
-            click: () => {
-              console.log('change zoom to Figueira');
-              // window.location.href = "/homeEriceira";
-            },
-          }}
-        ></Marker>
-        <Marker
-          id="markerEriceira"
-          position={posEriceira}
-          eventHandlers={{
-            click: () => {
-              console.log('change zoom to Ericeira');
-              // window.location.href = "/homeEriceira";
-            },
-          }}
-        ></Marker>
+        </Marker> */}
+        {city2 ? null : markers}
+
+        
       </MapContainer>
     </>
   );

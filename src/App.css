@@ -269,7 +269,14 @@ body {
 .App-menu-logo {
     height: 9vh !important;
 }
-
+.leaflet-control-layers-toggle{
+    display: none!important;
+}
+.leaflet-bar{
+    position: fixed!important;
+    bottom: 1rem!important;
+    left:1rem;
+}
 .testeIcon {
     height: 48px;
     width: 35px;
@@ -294,19 +301,6 @@ body {
     z-index: 1000;
 }
 
-.ol-attribution.ol-unselectable.ol-control {
-    visibility: hidden;
-}
-
-.ol-zoom.ol-unselectable.ol-control {
-    top: inherit !important;
-    bottom: 1rem;
-    left: 1rem;
-}
-
-.ol-touch .ol-control button {
-    font-size: 1.4rem !important;
-}
 
 .testeIconFigueira {
     height: 75px;
@@ -318,14 +312,6 @@ body {
 
 }
 
-.testeIconFigueiraPerfil1 {
-    height: 40px;
-    width: 40px;
-    /*background-color: red;*/
-    background-image: url("imgs/icones/right-arrow.png");
-    background-repeat: no-repeat;
-    background-size: 40px 40px;
-}
 
 
 
@@ -588,10 +574,14 @@ body {
     }
 }
 
-/*-------SIDENAV-----*/
+/*-------menuCity-----*/
+#menuCity{
+    z-index: 10000!important;
+}
 
 
 #backBtn {
+    z-index: inherit;
     background: url("imgs/icones/backBtn.png") no-repeat !important;
     background-size: 35px !important;
     position: fixed !important;
@@ -606,6 +596,7 @@ body {
 }
 
 #infoBtn {
+    z-index: inherit;
     background: url("imgs/icones/infoBtn.png") no-repeat !important;
     background-size: 35px !important;
     position: fixed !important;
@@ -615,6 +606,7 @@ body {
 }
 
 #camBtn {
+    z-index: inherit;
     background: url("imgs/icones/camVideoBtn.png") no-repeat !important;
     background-size: 35px !important;
     position: fixed !important;
