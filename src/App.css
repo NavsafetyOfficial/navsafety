@@ -90,7 +90,11 @@
     cursor: pointer;
 }
 
-html, body, #root, #appContainer, #appContainer2 {
+html,
+body,
+#root,
+#appContainer,
+#appContainer2 {
     height: 100%;
     font-family: "FuturaMdBT";
 }
@@ -148,9 +152,11 @@ body {
     color: #005086 !important;
 }
 
-.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+.form-control::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: rgb(233, 236, 239) !important;
-    opacity: 0.8; /* Firefox */
+    opacity: 0.8;
+    /* Firefox */
 }
 
 .navbar {
@@ -193,7 +199,8 @@ body {
 
 }
 
-.activeNavbar {
+.activeNavbar,
+.linkNavbar:active {
     font-family: 'FuturaMdBT' !important;
     color: #DFBC79 !important;
     border-bottom: 5px solid #DFBC79 !important;
@@ -221,7 +228,7 @@ body {
 
 .iconInfo {
     height: 35px;
-    width: auto!important;
+    width: auto !important;
 }
 
 .extraText {
@@ -269,14 +276,17 @@ body {
 .App-menu-logo {
     height: 9vh !important;
 }
-.leaflet-control-layers-toggle{
-    display: none!important;
+
+.leaflet-control-layers-toggle {
+    display: none !important;
 }
-.leaflet-bar{
-    position: fixed!important;
-    bottom: 1rem!important;
-    left:1rem;
+
+.leaflet-bar {
+    position: fixed !important;
+    bottom: 1rem !important;
+    left: 1rem;
 }
+
 .testeIcon {
     height: 48px;
     width: 35px;
@@ -420,7 +430,9 @@ body {
 }
 
 
-.btnTypeUser:hover, .btnTypeUser:active, .btnTypeUser:focus {
+.btnTypeUser:hover,
+.btnTypeUser:active,
+.btnTypeUser:focus {
     background-color: transparent !important;
     border: none !important;
     box-shadow: none;
@@ -500,16 +512,24 @@ body {
 /* The side navigation menu */
 .sidenav {
     color: #005086 !important;
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 200000; /* Stay on top */
-    top: 0; /* Stay at the top */
+    height: 100%;
+    /* 100% Full-height */
+    width: 0;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 200000;
+    /* Stay on top */
+    top: 0;
+    /* Stay at the top */
     right: 0;
     background-color: white;
-    overflow-x: hidden; /* Disable horizontal scroll */
-    /*padding-top: 60px;*/ /* Place content 60px from the top */
-    transition: 0.2s; /* 0.5 second transition effect to slide in the sidenav */
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    /*padding-top: 60px;*/
+    /* Place content 60px from the top */
+    transition: 0.2s;
+    /* 0.5 second transition effect to slide in the sidenav */
 }
 
 /* The navigation menu links */
@@ -575,8 +595,8 @@ body {
 }
 
 /*-------menuCity-----*/
-#menuCity{
-    z-index: 10000!important;
+#menuCity {
+    z-index: 10000 !important;
 }
 
 
@@ -699,10 +719,10 @@ body {
 }
 
 
-.row {
+/* .row {
     padding-left: 30px;
     padding-right: 30px;
-}
+} */
 
 .iconsLogin {
     width: 20px;
@@ -727,13 +747,15 @@ body {
     color: white;
 }
 
-.form-control:focus, .form-control:hover {
+.form-control:focus,
+.form-control:hover {
     background-color: transparent;
     color: white;
     box-shadow: none;
 }
 
-.placeEditProfile:focus, .placeEditProfile:hover {
+.placeEditProfile:focus,
+.placeEditProfile:hover {
     color: #005086 !important;
 
 }
@@ -778,7 +800,9 @@ body {
     color: white !important;
 }
 
-.btnLogin:focus, .btnLogin:hover, button.btnLogin.btn.btn-outline-primary:active {
+.btnLogin:focus,
+.btnLogin:hover,
+button.btnLogin.btn.btn-outline-primary:active {
     background-color: white !important;
     color: #005086 !important;
     border-box: none;
@@ -800,7 +824,9 @@ body {
     border-color: #06234A !important;
 }
 
-.btnEditProfile:focus, .btnEditProfile:hover, button.btnEditProfile.btn.btn-outline-primary:active {
+.btnEditProfile:focus,
+.btnEditProfile:hover,
+button.btnEditProfile.btn.btn-outline-primary:active {
     background-color: white !important;
     color: #06234A !important;
 }
@@ -818,51 +844,86 @@ body {
 }
 
 @media (min-width: 375px) {
-    .cameraResponsive{
+    .cameraResponsive {
         min-height: 180px;
     }
 }
 
 @media (min-width: 475px) {
-    .cameraResponsive{
+    .cameraResponsive {
         min-height: 210px;
     }
 }
 
 @media (min-width: 576px) {
-    .cameraResponsive{
+    .cameraResponsive {
         min-height: 260px;
     }
 }
 
 @media (min-width: 768px) {
-    .cameraResponsive{
+    .cameraResponsive {
         min-height: 360px;
     }
 }
 
 @media (min-width: 992px) {
-    .cameraResponsive{
+    .cameraResponsive {
         min-height: 440px;
     }
 }
 
 @media (min-width: 1200px) {
-    .cameraResponsive{
+    .cameraResponsive {
         min-height: 535px;
     }
 }
 
 
-#toggleBtnNMM , #toggleBtnZH {
+#toggleBtnNMM,
+#toggleBtnZH {
     background-color: transparent !important;
     border-color: #06234A !important;
-    color: #06234A!important;
-    box-shadow: none!important;
+    color: #06234A !important;
+    box-shadow: none !important;
 }
 
-#toggleBtnNMM.active , #toggleBtnZH.active {
+#toggleBtnNMM.active,
+#toggleBtnZH.active {
     background-color: #06234A !important;
-    color: white!important;
+    color: white !important;
+}
+
+.leaflet-control-attribution {
+    display: none;
+}
+
+#legendaBarMap {
+    position: fixed;
+    bottom: 2.5rem;
+    right: 2rem;
+    width: 50vw;
+    z-index: 10000;
+    height: 2rem;
+    border-radius: 15px;
+    
+}
+.descricaoBar{
+    position: fixed;
+    bottom: 1rem;
+    right: 2rem;
+    width: 50vw;
+    text-align: end;
+    z-index: 10000;
+    font-family: "FuturaHvBT"!important;
+    text-shadow: 2px 2px 5px #292929;
+    color:#091233;
+}
+
+.progress-bar {
+    font-size: 14px;
+    text-align: right !important;
+    color: #091233!important;
+    font-family: "FuturaHkBT"!important;
 }
 

@@ -15,7 +15,7 @@ import "leaflet-defaulticon-compatibility";
 import { ShapeFile } from "./ShapeFile";
 import { TileProviders } from "../lib/TileProviders";
 import colorbrewer from "colorbrewer";
-import { Button } from "react-bootstrap";
+import { Button, ProgressBar } from "react-bootstrap";
 const fs = require("fs");
 
 const MyMap = (props) => {
@@ -25,6 +25,7 @@ const MyMap = (props) => {
   let posEriceira = [38.9629, -9.4211];
   let zoom = 7;
   let maxZoom = 12;
+  let colorPaletteProgress = colorbrewer.RdYlGn[11];
 
   // let [zoom, setZoom] = useState(7);
 
@@ -111,6 +112,35 @@ const MyMap = (props) => {
 
   const style = (feature) => {
     // console.log(feature);
+    console.log(colorbrewer.RdYlGn[11]);
+    let profundidade = feature.properties.Z;
+
+    let colorPalette;
+    if (profundidade < -12) {
+      colorPalette = 1;
+    } else if (profundidade >= -12 && profundidade < -11) {
+      colorPalette = 2;
+    } else if (profundidade >= -11 && profundidade < -10) {
+      colorPalette = 3;
+    } else if (profundidade >= -10 && profundidade < -9) {
+      colorPalette = 4;
+    } else if (profundidade >= -9 && profundidade < -8) {
+      colorPalette = 5;
+    } else if (profundidade >= -8 && profundidade < -7) {
+      colorPalette = 6;
+    } else if (profundidade >= -7 && profundidade < -6) {
+      colorPalette = 7;
+    } else if (profundidade >= -6 && profundidade < -5) {
+      colorPalette = 8;
+    } else if (profundidade >= -5 && profundidade < -4) {
+      colorPalette = 9;
+    } else if (profundidade >= -4 && profundidade < -3) {
+      colorPalette = 10;
+    } else if (profundidade >= -3) {
+      colorPalette = 11;
+    }
+    console.log(profundidade, "--", colorPalette);
+
     return {
       opacity: 1,
       fillOpacity: 0.7,
@@ -118,9 +148,11 @@ const MyMap = (props) => {
       weight: 3,
       dashArray: "2",
       // from http://stackoverflow.com/a/15710692
-      color: colorbrewer.Spectral[11][Math.ceil(Math.random() * 1000) % 11],
+      //color: colorbrewer.Spectral[11][Math.ceil(Math.random() * 1000) % 11],
+      color: colorPaletteProgress[colorPalette],
     };
   };
+
 
   let ShapeLayers = null;
   if (geodata !== null) {
@@ -138,37 +170,56 @@ const MyMap = (props) => {
     varIdx1: 0,
     varFullName1: "OpenStreetMap Mapnik",
     varUrl1: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-    varAttribution1:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    // varAttribution1:
+    //   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   };
   let BaseLayers = (
     <BaseLayer checked key={infoAPI.varIdx1} name={infoAPI.varFullName1}>
-      <TileLayer url={infoAPI.varUrl1} attribution={infoAPI.varAttribution1} />
+      <TileLayer url={infoAPI.varUrl1} />
     </BaseLayer>
   );
-  let TileLayers = (
-    <TileLayer url={infoAPI.varUrl1} attribution={infoAPI.varAttribution1} />
-  );
+  let TileLayers = <TileLayer url={infoAPI.varUrl1} />;
 
   let menuCity = (
     <div id="menuCity">
       <Button
         id="backBtn"
-        className="voltarBtn"
+        className="voltarBtn ms-3"
         onClick={() => {
           setCity();
         }}
       ></Button>
       <Button
         id="infoBtn"
-        className="voltarBtn"
-        href={city2 == "Figueira" ? "/InfoGeralFigueira_Waves/" : "/InfoGeralEriceira_Waves/"}
+        className="voltarBtn me-6"
+        href={
+          city2 == "Figueira"
+            ? "/InfoGeralFigueira_Waves/"
+            : "/InfoGeralEriceira_Waves/"
+        }
       ></Button>
       <Button
         id="camBtn"
-        className="voltarBtn"
+        className="voltarBtn me-3"
         href={city2 == "Figueira" ? "/camaraFigueira" : "/camaraEriceira"}
       ></Button>
+    </div>
+  );
+ 
+  let legendaBar = (
+    <div id="legendaBar">
+      <ProgressBar id="legendaBarMap">
+        <ProgressBar now={100 / 9} key={1} label="-11" style={{background: colorPaletteProgress[1]}} />
+        <ProgressBar now={100 / 9} key={2} label="-10" style={{background: colorPaletteProgress[2]}}/>
+        <ProgressBar now={100 / 9} key={3} label="-9" style={{background: colorPaletteProgress[3]}}/>
+        <ProgressBar now={100 / 9} key={4} label="-8" style={{background: colorPaletteProgress[4]}}/>
+        <ProgressBar now={100 / 9} key={5} label="-7" style={{background: colorPaletteProgress[5]}}/>
+        <ProgressBar now={100 / 9} key={6} label="-6" style={{background: colorPaletteProgress[6]}}/>
+        <ProgressBar now={100 / 9} key={7} label="-5" style={{background: colorPaletteProgress[7]}}/>
+        <ProgressBar now={100 / 9} key={8} label="-4" style={{background: colorPaletteProgress[8]}}/>
+        <ProgressBar now={100 / 9} key={9} label="-3" style={{background: colorPaletteProgress[9]}}/>
+      </ProgressBar>
+      <span class="descricaoBar">Depth ZH (m)</span>
     </div>
   );
 
@@ -234,8 +285,8 @@ const MyMap = (props) => {
 
   useEffect(() => {
     //se quiser ter um ficheiro já carregado por defeito, este codigo tem de estar ativo
-    // if (geodata == null) {
-    //   loadFiles();
+    // if (props.city == "Figueira") {
+    //   setCity("Figueira")
     // }
   });
 
@@ -249,7 +300,7 @@ const MyMap = (props) => {
         />
       ) : null} */}
       {city2 ? menuCity : null}
-
+      {city2 ? legendaBar : null}
       <MapContainer
         center={center}
         zoom={zoom}

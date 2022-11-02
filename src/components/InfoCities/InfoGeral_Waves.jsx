@@ -18,16 +18,17 @@ const divStyle = {
 }
 
 
-class InfoGeralFigueira_Waves extends Component {
+class InfoGeral_Waves extends Component {
     //initialize an object's state in a class
     constructor(props) {
         super(props)
         this.state = {
+            city:this.props.city,
             locaisDataID: [],
             locaisDataNome: [],
-            idZonaCosteiraFigueira:0,
-            idEstacaoFigueira:0,
-            dataFigueira:[],
+            idZonaCosteira:0,
+            idEstacao:0,
+            dataLocal:[],
             chosenDay:0,
             arrayChosenDay:["Today", "1 Day from now", "2 Days from now"]
         }
@@ -35,8 +36,8 @@ class InfoGeralFigueira_Waves extends Component {
     }
     getInfoWaves(){
         this.setState({showLoading: true});
-        const urlLocais = 'https://geo-navsafety.ua.pt:443/localFigueira';
-        console.log(urlLocais);
+        const urlLocais = 'https://geo-navsafety.ua.pt:443/local'+this.props.city;
+        //console.log(urlLocais);
 
         let arrayTeste = [];
         fetch(urlLocais)
@@ -45,38 +46,36 @@ class InfoGeralFigueira_Waves extends Component {
             )
             .then(
                 locais => {
-                    console.log(locais);
-                    console.log(locais.length);
+                    //console.log(locais);
+                    //console.log(locais.length);
                     // locaisData=locais.map((locais)=>locais);
                     for (var i = 0; i < locais.length; i++) {
                         arrayTeste.push(locais[i])
                     }
-                    console.log(arrayTeste);
+                    //console.log(arrayTeste);
                 }
             ).then(locais => {
             this.setState({locaisDataID: arrayTeste});
-            this.setState({idZonaCosteiraFigueira: arrayTeste[0].zonaCosteiraIPMA_ID});
-            this.setState({idEstacaoFigueira: arrayTeste[0].estacaoIPMA_ID});
+            this.setState({idZonaCosteira: arrayTeste[0].zonaCosteiraIPMA_ID});
+            this.setState({idEstacao: arrayTeste[0].estacaoIPMA_ID});
 
             let ArrayDados=[];
             console.warn('!!!'+this.state.chosenDay);
             let urlLogin='https://api.ipma.pt/open-data/forecast/oceanography/daily/hp-daily-sea-forecast-day'+this.state.chosenDay+'.json';
-            console.log(urlLogin);
+            //console.log(urlLogin);
             axios.get(urlLogin).then((response) => {
                 //para mostrar a resposta da api da bd
-                console.log('response from then', response);
-                console.log('data.data.length', response.data.data.length);
+                //console.log('response from then', response);
+                //console.log('data.data.length', response.data.data.length);
 
-                console.log('DATA HERE',response.data.data);
+                //console.log('DATA HERE',response.data.data);
                 for(let i=0; i<response.data.data.length;i++){
                     if(response.data.data[i].globalIdLocal===arrayTeste[0].zonaCosteiraIPMA_ID){
-                        console.log('RESPONSE FROM FIGUEIRA', response.data.data[i]);
                         ArrayDados=response.data.data[i];
-                        console.log('qual é o array de dados???',ArrayDados);
-                        this.setState({dataFigueira: ArrayDados});
+                        this.setState({dataLocal: ArrayDados});
                         this.setState({showLoading: false});
                     }else{
-                        console.log('dammm');
+                        //console.log('dammm');
                     }
                 }
             });
@@ -84,7 +83,7 @@ class InfoGeralFigueira_Waves extends Component {
     }
 
     mudarData(event){
-        console.log('hey',event);
+        //console.log('hey',event);
         //alert(event)
         this.setState({chosenDay: event});
         this.getInfoWaves();
@@ -104,6 +103,7 @@ class InfoGeralFigueira_Waves extends Component {
                 margin: "auto",
                 display: "block",
                 height: "100px",
+                width: "auto",
             }
             showDivInfo = {
                 display: "none"
@@ -113,20 +113,23 @@ class InfoGeralFigueira_Waves extends Component {
                 margin: "auto",
                 display: "none",
                 height: "100px",
+                width: "auto",
             }
             showDivInfo = {
                 display: "block"
             }
         }
-        //console.log(this.state.idZonaCosteiraFigueira);
-       // console.log(this.state.idEstacaoFigueira);
-        console.log('STATE RESPONSE ON RENDER', this.state.dataFigueira);
-
+        //console.log('STATE RESPONSE ON RENDER', this.state.dataLocal);
+        console.log(this.state.city);
         return (
             <div className="maincontainer mainContainerInfo" style={divStyle}>
                 <Container>
                     <Row className="pt-3">
-                        <Button id="backBtnInfoGeral" className="voltarBtn" href="/figueiraFoz/"></Button>
+                        <Button id="backBtnInfoGeral" className="voltarBtn" href={
+                this.state.city == "Figueira"
+                  ? "/figueiraFoz"
+                  : "/ericeira"
+              }></Button>
                     </Row>
                     <Row className="SubTitles pt-3 valueInfo">{this.state.arrayChosenDay[this.state.chosenDay]}</Row>
                     <Row className='pr-0 pt-2 sliderContainer'>
@@ -157,29 +160,29 @@ class InfoGeralFigueira_Waves extends Component {
                     <Row className='pr-0'>
                         <Col className='pl-0 pt-2' xs={12} sm={5} md={5}>
                             <img className="iconInfo" src={waveMedia}/>
-                            <span className="valueInfo pl-2">{this.state.dataFigueira.totalSeaMin} m</span>
+                            <span className="valueInfo pl-2">{this.state.dataLocal.totalSeaMin} m</span>
                             <span className="extraText pl-2">(Lower wave)</span>
                         </Col>
                         <Col className='pl-0 pt-2' xs={12} sm={5} md={5}>
                             <img className="iconInfo" src={bigWave}/>
-                            <span className="valueInfo pl-2">{this.state.dataFigueira.totalSeaMax} m </span>
+                            <span className="valueInfo pl-2">{this.state.dataLocal.totalSeaMax} m </span>
                             <span className="extraText pl-2">(Higher wave)</span>
                         </Col>
                     </Row>
                     <Row className="SubTitles pt-3">Waves Direction</Row>
                     <Row className='pr-0 pt-2'>
-                        <img className="iconInfo" src={direction}/><span className="valueInfo pl-2">{this.state.dataFigueira.predWaveDir}</span>
+                        <img className="iconInfo" src={direction}/><span className="valueInfo pl-2">{this.state.dataLocal.predWaveDir}</span>
                     </Row>
                     <Row className="SubTitles pt-3">Waves Period</Row>
                     <Row className='pr-0 pb-3'>
                         <Col className='pl-0 pt-2' xs={12} sm={5} md={5}>
                             <img className="iconInfo" src={chronometerMin}/>
-                            <span className="valueInfo pl-2">{this.state.dataFigueira.wavePeriodMin} s</span>
+                            <span className="valueInfo pl-2">{this.state.dataLocal.wavePeriodMin} s</span>
                             <span className="extraText pl-2">(Minimum)</span>
                         </Col>
                         <Col className='pl-0 pt-2' xs={12} sm={5} md={5}>
                             <img className="iconInfo" src={chronometerMax}/>
-                            <span className="valueInfo pl-2">{this.state.dataFigueira.wavePeriodMax} s</span>
+                            <span className="valueInfo pl-2">{this.state.dataLocal.wavePeriodMax} s</span>
                             <span className="extraText pl-2">(Maximum)</span>
                         </Col>
                     </Row>
@@ -193,5 +196,5 @@ class InfoGeralFigueira_Waves extends Component {
     };
 }
 
-export default InfoGeralFigueira_Waves;
+export default InfoGeral_Waves;
 

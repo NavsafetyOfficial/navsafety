@@ -14,10 +14,12 @@
     "react": "^17.0.2",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^17.0.2",
+    "react-google-charts": "^3.0.15",
     "react-leaflet": "^3.2.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "4.0.3",
     "shpjs": "^4.0.2",
+    "sunrise-sunset-js": "^2.2.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

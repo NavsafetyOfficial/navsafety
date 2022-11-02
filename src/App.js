@@ -33,16 +33,34 @@ function App() {
     <div id="appContainer2">
       {showHeader2 && headerElement}
       <Switch>
+        {/* FIGUEIRA */}
+        <Route path="/figueiraFoz" >
+          <MyMap city="Figueira" /> 
+        </Route>
         <Route path="/camaraFigueira" >
           <Camara city="Figueira" /> 
         </Route>
+        <Route path="/InfoGeralFigueira_Waves" >
+          <NavbarInfoGeral city="Figueira" currentTab="waves"/>
+        </Route>
+        <Route path="/InfoGeralFigueira_Tides" >
+          <NavbarInfoGeral city="Figueira" currentTab="tides"/>
+        </Route>
+        <Route path="/InfoGeralFigueira_Wind" >
+          <NavbarInfoGeral city="Figueira" currentTab="wind"/>
+        </Route>
+        <Route path="/InfoGeralFigueira_Weather" >
+          <NavbarInfoGeral city="Figueira" currentTab="weather"/>
+        </Route>  
+        {/* ERICEIRA */}
         <Route path="/camaraEriceira" >
           <Camara city="Ericeira" /> 
         </Route>
-        <Route path="/InfoGeralFigueira_Waves" >
-          <NavbarInfoGeral city="figueira" currentTab="waves"/>
-        </Route>  
+        <Route path="/InfoGeralEriceira_Waves" >
+          <NavbarInfoGeral city="Ericeira" currentTab="waves"/>
+        </Route>
 
+        {/* Home, login, registo */}
         <Route path="/">
           <MyMap />
         </Route>    
