@@ -117,27 +117,27 @@ const MyMap = (props) => {
 
     let colorPalette;
     if (profundidade < -12) {
-      colorPalette = 1;
+      colorPalette = 11;
     } else if (profundidade >= -12 && profundidade < -11) {
-      colorPalette = 2;
+      colorPalette = 10;
     } else if (profundidade >= -11 && profundidade < -10) {
-      colorPalette = 3;
+      colorPalette = 9;
     } else if (profundidade >= -10 && profundidade < -9) {
-      colorPalette = 4;
+      colorPalette = 8;
     } else if (profundidade >= -9 && profundidade < -8) {
-      colorPalette = 5;
+      colorPalette = 7;
     } else if (profundidade >= -8 && profundidade < -7) {
       colorPalette = 6;
     } else if (profundidade >= -7 && profundidade < -6) {
-      colorPalette = 7;
+      colorPalette = 5;
     } else if (profundidade >= -6 && profundidade < -5) {
-      colorPalette = 8;
+      colorPalette = 4;
     } else if (profundidade >= -5 && profundidade < -4) {
-      colorPalette = 9;
+      colorPalette = 3;
     } else if (profundidade >= -4 && profundidade < -3) {
-      colorPalette = 10;
+      colorPalette = 2;
     } else if (profundidade >= -3) {
-      colorPalette = 11;
+      colorPalette = 1;
     }
     console.log(profundidade, "--", colorPalette);
 
@@ -209,24 +209,24 @@ const MyMap = (props) => {
   let legendaBar = (
     <div id="legendaBar">
       <ProgressBar id="legendaBarMap">
-        <ProgressBar now={100 / 9} key={1} label="-11" style={{background: colorPaletteProgress[1]}} />
-        <ProgressBar now={100 / 9} key={2} label="-10" style={{background: colorPaletteProgress[2]}}/>
-        <ProgressBar now={100 / 9} key={3} label="-9" style={{background: colorPaletteProgress[3]}}/>
-        <ProgressBar now={100 / 9} key={4} label="-8" style={{background: colorPaletteProgress[4]}}/>
+        <ProgressBar now={100 / 9} key={1} label="-11" style={{background: colorPaletteProgress[9]}} />
+        <ProgressBar now={100 / 9} key={2} label="-10" style={{background: colorPaletteProgress[8]}}/>
+        <ProgressBar now={100 / 9} key={3} label="-9" style={{background: colorPaletteProgress[7]}}/>
+        <ProgressBar now={100 / 9} key={4} label="-8" style={{background: colorPaletteProgress[6]}}/>
         <ProgressBar now={100 / 9} key={5} label="-7" style={{background: colorPaletteProgress[5]}}/>
-        <ProgressBar now={100 / 9} key={6} label="-6" style={{background: colorPaletteProgress[6]}}/>
-        <ProgressBar now={100 / 9} key={7} label="-5" style={{background: colorPaletteProgress[7]}}/>
-        <ProgressBar now={100 / 9} key={8} label="-4" style={{background: colorPaletteProgress[8]}}/>
-        <ProgressBar now={100 / 9} key={9} label="-3" style={{background: colorPaletteProgress[9]}}/>
+        <ProgressBar now={100 / 9} key={6} label="-6" style={{background: colorPaletteProgress[4]}}/>
+        <ProgressBar now={100 / 9} key={7} label="-5" style={{background: colorPaletteProgress[3]}}/>
+        <ProgressBar now={100 / 9} key={8} label="-4" style={{background: colorPaletteProgress[2]}}/>
+        <ProgressBar now={100 / 9} key={9} label="-3" style={{background: colorPaletteProgress[1]}}/>
       </ProgressBar>
-      <span class="descricaoBar">Depth ZH (m)</span>
+      <span className="descricaoBar">Depth ZH (m)</span>
     </div>
   );
 
   let markers = (
     <>
       <Marker
-        class="markerMap"
+        className="markerMap"
         id="markerFigueira"
         position={posFigueira}
         eventHandlers={{

@@ -2,7 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 import MyMap from './components/MyMap';
 import Camara from './components/Camara';
-import HomeMap from './components/HomeMap';
 import Header from './components/Header';
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavbarInfoGeral from './components/NavbarInfoGeral';
