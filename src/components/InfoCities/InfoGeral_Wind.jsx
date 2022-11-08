@@ -146,22 +146,24 @@ class InfoGeral_Wind extends Component {
                     <Row> <img src={loading} style={showDiv}/></Row>
                     <div style={showDivInfo}>
                         <Row className="SubTitles pt-3">Wind direction</Row>
-                        <Row className='pr-0 pt-2'>
+                        <Row className='pe-0 pt-2'>
+                            <Col xs={12} className="ps-0">
                             <img className="iconInfo" src={direction}/>
                             <span
-                                className="valueInfo pl-2">{this.state.arrayIdVento[this.state.dataWind.idDireccVento]}</span>
+                                className="valueInfo ps-2">{this.state.arrayIdVento[this.state.dataWind.idDireccVento]}</span>
+                            </Col>
                         </Row>
                         <Row className="SubTitles pt-3">Wind speed</Row>
-                        <Row className='pr-0 pb-3'>
-                            <Col className='pl-0 pt-2' xs={12} sm={5} md={5}>
+                        <Row className='pe-0 pb-3'>
+                            <Col className='ps-0 pt-2' xs={12} sm={5} md={5}>
                                 <img className="iconInfo" src={windSpeed}/>
                                 <span
-                                    className="valueInfoExtra pl-2">{this.state.dataWind.intensidadeVento} m/s</span>
+                                    className="valueInfoExtra ps-2">{this.state.dataWind.intensidadeVento} m/s</span>
                             </Col>
-                            <Col className='pl-0 pt-2' xs={12} sm={5} md={5}>
+                            <Col className='ps-0 pt-2' xs={12} sm={5} md={5}>
                                 <img className="iconInfo" src={windSpeed}/>
                                 <span
-                                    className="valueInfoExtra pl-2">{this.state.dataWind.intensidadeVentoKM} km/h</span>
+                                    className="valueInfoExtra ps-2">{this.state.dataWind.intensidadeVentoKM} km/h</span>
                             </Col>
                         </Row>
                         <Row className="pt-3 pb-3">
@@ -170,8 +172,8 @@ class InfoGeral_Wind extends Component {
                     </div>
 
                     {/*<Row className="SubTitles pt-3">Wind gusts</Row>
-                    <Row className='pr-0 pt-2'>
-                        <img className="iconInfo" src={windGusts}/><span className="valueInfoExtra pl-2">FALTA ESTA INFO</span>
+                    <Row className='pe-0 pt-2'>
+                        <img className="iconInfo" src={windGusts}/><span className="valueInfoExtra ps-2">FALTA ESTA INFO</span>
                     </Row>*/}
                 </Container>
             </div>

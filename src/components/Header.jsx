@@ -20,14 +20,14 @@ class Header extends Component {
         let name=text.split("/");
     
         return (
-            <Row className="p-0 m-0 App-header">
+            <Row className="m-0 App-header">
                 <Col xs={3} sm={2} md={2} lg={2}>
                     <img src={logo} className="App-logo" alt="logo" />
                 </Col>
                 <Col className="titlePageCol d-flex align-items-center justify-content-center" xs={6} sm={8} md={8} lg={8}>
-                    <span id="titlePage">{pageName}</span>
+                    <span id="titlePage">{text}</span>
                 </Col>
-                <Col xs={3} sm={2} md={2} lg={2} className="col-profile pr-0">
+                <Col xs={3} sm={2} md={2} lg={2} className="col-profile">
                     <Profile />
                 </Col>
             </Row>

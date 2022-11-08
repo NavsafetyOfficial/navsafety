@@ -132,7 +132,7 @@ class InfoGeral_Waves extends Component {
               }></Button>
                     </Row>
                     <Row className="SubTitles pt-3 valueInfo">{this.state.arrayChosenDay[this.state.chosenDay]}</Row>
-                    <Row className='pr-0 pt-2 sliderContainer'>
+                    <Row className='pe-0 pt-2 sliderContainer'>
                         <Form className='sliderContainer'>
                             <Form.Group controlId="formBasicRange ">
                                 <Form.Label className='sliderText pb-2'>Use the slider to see waves info for the next days</Form.Label>
@@ -157,33 +157,35 @@ class InfoGeral_Waves extends Component {
                     <Row> <img src={loading} style={showDiv}/></Row>
                     <div style={showDivInfo}>
                     <Row className="SubTitles pt-2">Waves Height</Row>
-                    <Row className='pr-0'>
-                        <Col className='pl-0 pt-2' xs={12} sm={5} md={5}>
+                    <Row className='pe-0'>
+                        <Col className='ps-0 pt-2' xs={12} sm={5} md={5}>
                             <img className="iconInfo" src={waveMedia}/>
-                            <span className="valueInfo pl-2">{this.state.dataLocal.totalSeaMin} m</span>
-                            <span className="extraText pl-2">(Lower wave)</span>
+                            <span className="valueInfo ps-2">{this.state.dataLocal.totalSeaMin} m</span>
+                            <span className="extraText ps-2">(Lower wave)</span>
                         </Col>
-                        <Col className='pl-0 pt-2' xs={12} sm={5} md={5}>
+                        <Col className='ps-0 pt-2' xs={12} sm={5} md={5}>
                             <img className="iconInfo" src={bigWave}/>
-                            <span className="valueInfo pl-2">{this.state.dataLocal.totalSeaMax} m </span>
-                            <span className="extraText pl-2">(Higher wave)</span>
+                            <span className="valueInfo ps-2">{this.state.dataLocal.totalSeaMax} m </span>
+                            <span className="extraText ps-2">(Higher wave)</span>
                         </Col>
                     </Row>
                     <Row className="SubTitles pt-3">Waves Direction</Row>
-                    <Row className='pr-0 pt-2'>
-                        <img className="iconInfo" src={direction}/><span className="valueInfo pl-2">{this.state.dataLocal.predWaveDir}</span>
+                    <Row className='pe-0 pt-2'>
+                        <Col xs={12} className="ps-0">
+                        <img className="iconInfo" src={direction}/><span className="valueInfo ps-2">{this.state.dataLocal.predWaveDir}</span>
+                        </Col>
                     </Row>
                     <Row className="SubTitles pt-3">Waves Period</Row>
-                    <Row className='pr-0 pb-3'>
-                        <Col className='pl-0 pt-2' xs={12} sm={5} md={5}>
+                    <Row className='pe-0 pb-3'>
+                        <Col className='ps-0 pt-2' xs={12} sm={5} md={5}>
                             <img className="iconInfo" src={chronometerMin}/>
-                            <span className="valueInfo pl-2">{this.state.dataLocal.wavePeriodMin} s</span>
-                            <span className="extraText pl-2">(Minimum)</span>
+                            <span className="valueInfo ps-2">{this.state.dataLocal.wavePeriodMin} s</span>
+                            <span className="extraText ps-2">(Minimum)</span>
                         </Col>
-                        <Col className='pl-0 pt-2' xs={12} sm={5} md={5}>
+                        <Col className='ps-0 pt-2' xs={12} sm={5} md={5}>
                             <img className="iconInfo" src={chronometerMax}/>
-                            <span className="valueInfo pl-2">{this.state.dataLocal.wavePeriodMax} s</span>
-                            <span className="extraText pl-2">(Maximum)</span>
+                            <span className="valueInfo ps-2">{this.state.dataLocal.wavePeriodMax} s</span>
+                            <span className="extraText ps-2">(Maximum)</span>
                         </Col>
                     </Row>
                     <Row className="pt-3 pb-3">

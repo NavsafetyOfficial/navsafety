@@ -15,14 +15,14 @@ class Profile extends Component {
     /* Set the width of the side navigation to 250px */
     openNav() {
         document.getElementById("mySidenav").style.width = "250px";
-        document.getElementById('fullscreen').style.display = 'block';
+        //document.getElementById('fullscreen').style.display = 'block';
         // document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
     }
 
     /* Set the width of the side navigation to 0 */
     closeNav() {
         document.getElementById("mySidenav").style.width = "0";
-        document.getElementById('fullscreen').style.display = 'none';
+        //document.getElementById('fullscreen').style.display = 'none';
         // document.body.style.backgroundColor = "white";
     }
 
@@ -63,7 +63,7 @@ class Profile extends Component {
         }
 
         if (profileUserImg === "null") {
-            profileUser = "../icones/user4.jpg";
+            profileUser = "../imgs/icones/user4.jpg";
         } else {
             
             profileUser = profileUserImg;

@@ -96,7 +96,7 @@ body,
 #appContainer,
 #appContainer2 {
     height: 100%;
-    font-family: "FuturaMdBT";
+    font-family: "FuturaMdBT"!important;
 }
 
 body {
@@ -128,7 +128,7 @@ body {
     background-image: linear-gradient(to bottom right, #005086, #091233);
     height: 11vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     /*font-size: calc(10px + 2vmin);*/
@@ -424,9 +424,9 @@ body {
 }
 
 .btnTypeUser {
-    background-color: transparent;
-    border: none;
-    vertical-align: text-bottom;
+    background-color: transparent!important;
+    border: none!important;
+    vertical-align: text-bottom!important;
 }
 
 
@@ -688,11 +688,12 @@ body {
 */
 
 .logoLogin {
-    height: 150px;
+    height: 150px!important;
+    width: auto!important;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 80px;
-    margin-bottom: 20px;
+    margin-top: 80px!important;
+    margin-bottom: 20px!important;
     /*  position: absolute;
       top:50px;*/
 }
@@ -727,20 +728,29 @@ body {
 .iconsLogin {
     width: 20px;
 }
+.iconMenor{
+    width: 18px!important;
+}
 
-.input-group-text {
-    background-color: transparent;
-    border-top: none;
-    border-left: none;
-    border-right: none;
+
+
+.form-label {
+    background-color: transparent!important;
+    border-top: none!important;
+    border-left: none!important;
+    border-right: none!important;
+    border-bottom: 1px solid #ced4da;
+    border-bottom-left-radius: 5px;
 }
 
 .form-control {
-    background-color: transparent;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    color: white;
+    background-color: transparent!important;
+    border-top: none!important;
+    border-left: none!important;
+    border-right: none!important;
+    color: white!important;
+    border-bottom-left-radius: 0px!important;
+    line-height: 1.7!important;
 }
 
 .form-control::placeholder {
@@ -749,15 +759,18 @@ body {
 
 .form-control:focus,
 .form-control:hover {
-    background-color: transparent;
-    color: white;
-    box-shadow: none;
+    background-color: transparent!important;
+    color: white!important;
+    box-shadow: none!important;
+}
+
+#selectUserProfile.form-control:hover{
+    color: #005086 !important;
 }
 
 .placeEditProfile:focus,
 .placeEditProfile:hover {
     color: #005086 !important;
-
 }
 
 .form-control::placeholder {
@@ -765,11 +778,11 @@ body {
 }
 
 .editProfileForm {
-    color: #005086 !important;
+    color: #005086!important;
 }
 
 .editProfileForm::placeholder {
-    color: #005086 !important;
+    color: #005086!important;
 }
 
 .profileEdit {
@@ -795,7 +808,7 @@ body {
 }
 
 .btnLogin {
-    width: 150px;
+    width: 150px!important;
     border-color: white !important;
     color: white !important;
 }
@@ -805,7 +818,9 @@ body {
 button.btnLogin.btn.btn-outline-primary:active {
     background-color: white !important;
     color: #005086 !important;
-    border-box: none;
+    border: none!important;
+    margin-left: auto;
+    margin-right:auto;
 }
 
 .specialBtnLogin {
@@ -829,6 +844,8 @@ button.btnLogin.btn.btn-outline-primary:active {
 button.btnEditProfile.btn.btn-outline-primary:active {
     background-color: white !important;
     color: #06234A !important;
+    border: 1px solid #06234A !important;
+
 }
 
 #BathymetryPage {
@@ -906,6 +923,7 @@ button.btnEditProfile.btn.btn-outline-primary:active {
     z-index: 10000;
     height: 2rem;
     border-radius: 15px;
+    box-shadow: 2px 2px 5px #292929;;
     
 }
 .descricaoBar{

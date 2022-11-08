@@ -524,50 +524,50 @@ class InfoGeral_Tides extends Component {
     if (this.state.checkArrayMinMax) {
       if (this.state.hora1Min != "") {
         minTide1 = (
-          <Col className="pl-0 pt-2" xs={12} sm={5} md={5}>
+          <Col className="ps-0 pt-2" xs={12} sm={5} md={5}>
             <img className="iconInfo" src={lowTide} />
-            <span className="valueInfo pl-2">{this.state.valor1Min} m</span>
-            <span className="extraText pl-2">({this.state.hora1Min}) </span>
+            <span className="valueInfo ps-2">{this.state.valor1Min} m</span>
+            <span className="extraText ps-2">({this.state.hora1Min}) </span>
           </Col>
         );
       }
       if (this.state.hora2Min != "") {
         minTide2 = (
-          <Col className="pl-0 pt-2" xs={12} sm={5} md={5}>
+          <Col className="ps-0 pt-2" xs={12} sm={5} md={5}>
             <img className="iconInfo" src={lowTide} />
-            <span className="valueInfo pl-2">{this.state.valor2Min} m</span>
-            <span className="extraText pl-2">({this.state.hora2Min}) </span>
+            <span className="valueInfo ps-2">{this.state.valor2Min} m</span>
+            <span className="extraText ps-2">({this.state.hora2Min}) </span>
           </Col>
         );
       }
       if (this.state.hora1Max != "") {
         maxTide1 = (
-          <Col className="pl-0 pt-2" xs={12} sm={5} md={5}>
+          <Col className="ps-0 pt-2" xs={12} sm={5} md={5}>
             <img className="iconInfo" src={highTide} />
-            <span className="valueInfo pl-2">{this.state.valor1Max} m</span>
-            <span className="extraText pl-2">({this.state.hora1Max}) </span>
+            <span className="valueInfo ps-2">{this.state.valor1Max} m</span>
+            <span className="extraText ps-2">({this.state.hora1Max}) </span>
           </Col>
         );
       }
       if (this.state.hora2Max != "") {
         maxTide2 = (
-          <Col className="pl-0 pt-2" xs={12} sm={5} md={5}>
+          <Col className="ps-0 pt-2" xs={12} sm={5} md={5}>
             <img className="iconInfo" src={highTide} />
-            <span className="valueInfo pl-2">{this.state.valor2Max} m</span>
-            <span className="extraText pl-2">({this.state.hora2Max}) </span>
+            <span className="valueInfo ps-2">{this.state.valor2Max} m</span>
+            <span className="extraText ps-2">({this.state.hora2Max}) </span>
           </Col>
         );
       }
       if (this.state.firstTideMin) {
         //primeiro valor apresentado tem de ser min
         firstRow = (
-          <Row className="pr-0">
+          <Row className="pe-0">
             {minTide1}
             {maxTide1}
           </Row>
         );
         secondRow = (
-          <Row className="pr-0 pb-3">
+          <Row className="pe-0 pb-3">
             {minTide2}
             {maxTide2}
           </Row>
@@ -575,13 +575,13 @@ class InfoGeral_Tides extends Component {
       } else {
         //primeiro valor apresentado tem de ser max
         firstRow = (
-          <Row className="pr-0">
+          <Row className="pe-0">
             {maxTide1}
             {minTide1}
           </Row>
         );
         secondRow = (
-          <Row className="pr-0 pb-3">
+          <Row className="pe-0 pb-3">
             {maxTide2}
             {minTide2}
           </Row>
@@ -600,11 +600,13 @@ class InfoGeral_Tides extends Component {
             ></Button>
           </Row>
           <Row className="SubTitles pt-3 valueInfo">
+            <Col xs={12} className="p-0">
             {this.state.arrayChosenDay[this.state.chosenDay]}{" "}
             <span className="sliderText">{this.state.dateTime}</span>
+            </Col>
           </Row>
-          <Row className="pr-0 pt-2 sliderContainer">
-            <Form className="sliderContainer">
+          <Row className="pe-0 ps-0 pt-2 sliderContainer">
+            <Form className="pe-0 ps-0 sliderContainer">
               <Form.Group controlId="formBasicRange ">
                 <Form.Label className="sliderText pb-2">
                   Use the slider to see tides and sun info for the next days
@@ -622,7 +624,7 @@ class InfoGeral_Tides extends Component {
               </Form.Group>
             </Form>
           </Row>
-          <Row className="sliderText">
+          <Row className="sliderText pt-2">
             <Col className="slider3Legenda1">Today</Col>
             <Col className="slider3Legenda2">+1</Col>
             <Col className="slider3Legenda3">+2</Col>
@@ -666,7 +668,7 @@ class InfoGeral_Tides extends Component {
                 </ToggleButtonGroup>
               </Col>
             </Row>
-            <Row className="pt-2">
+            <Row className="pt-2 ">
               <span className="sliderText">
                 Tides and sun info for this day: {this.state.dateTime}
               </span>
@@ -676,20 +678,20 @@ class InfoGeral_Tides extends Component {
 
             {this.state.showGraph ? showInfo2 : ""}
             <Row className="SubTitles pt-3">Sunset and Sunrise Time</Row>
-            <Row className="pr-0 pb-3">
-              <Col className="pl-0 pt-2" xs={12} sm={5} md={5}>
+            <Row className="pe-0 pb-3">
+              <Col className="ps-0 pt-2" xs={12} sm={5} md={5}>
                 <img className="iconInfo" src={sunrise} />
-                <span className="valueInfo pl-2">
+                <span className="valueInfo ps-2">
                   {this.state.sunriseTimeState}
                 </span>
-                <span className="extraText pl-2">(Sunrise)</span>
+                <span className="extraText ps-2">(Sunrise)</span>
               </Col>
-              <Col className="pl-0 pt-2" xs={12} sm={5} md={5}>
+              <Col className="ps-0 pt-2" xs={12} sm={5} md={5}>
                 <img className="iconInfo" src={sunset} />
-                <span className="valueInfo pl-2">
+                <span className="valueInfo ps-2">
                   {this.state.sunsetTimeState}{" "}
                 </span>
-                <span className="extraText pl-2">(Sunset)</span>
+                <span className="extraText ps-2">(Sunset)</span>
               </Col>
             </Row>
           </div>

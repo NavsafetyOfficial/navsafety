@@ -76,7 +76,7 @@ const MyMap = (props) => {
         "Access-Control-Allow-Origin": "*",
       },
       body: new URLSearchParams({
-        local: "figueira",
+        local: "Figueira",
       }),
     };
 
