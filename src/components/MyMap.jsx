@@ -64,23 +64,22 @@ const MyMap = (props) => {
   };
 
   const loadFiles = (local) => {
-    const url = "http://193.137.172.61:80/true/zip";
+    const url = "https://geo-navsafety.ua.pt/getZip/";
+    const urlCompleto=url+local;
+    
 
-    if (local == "Figueira") {
-    }
+    
     const options = {
-      method: "POST",
+      method: "GET",
       headers: {
         Accept: "*/*",
         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
         "Access-Control-Allow-Origin": "*",
       },
-      body: new URLSearchParams({
-        local: "Figueira",
-      }),
+      
     };
 
-    fetch(url, options)
+    fetch(urlCompleto, options)
       .then((res) => res.blob())
       .then(function (file) {
         var reader = new FileReader();

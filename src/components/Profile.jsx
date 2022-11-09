@@ -67,6 +67,7 @@ class Profile extends Component {
         } else {
             
             profileUser = profileUserImg;
+            profileUser="http://geo-navsafety.ua.pt/imgs/users/fundoazul.png"
 
         }
        

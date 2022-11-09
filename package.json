@@ -1,5 +1,5 @@
 {
-  "name": "react-leaflet-maps-shapefile",
+  "name": "navsafety",
   "homepage": "http://oxy86.github.io/react-leaflet-maps-shapefile",
   "version": "0.1.0",
   "private": true,
@@ -24,7 +24,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set port=80 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
