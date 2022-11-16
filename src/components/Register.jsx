@@ -55,7 +55,7 @@ class Register extends Component {
     const stateEmailUser = this.state.emailUser;
     const statePasswordUser = this.state.password;
     const statetypeUser = this.state.typeUser;
-    const userImageDB = "../icones/user4.jpg";
+    const userImageDB = "../react-leaflet-maps-shapefile/imgs/user4.jpg";
 
     const urlRegistoUA = "https://geo-navsafety.ua.pt:443/registerUsers1";
 
@@ -78,7 +78,7 @@ class Register extends Component {
           this.setState({ errorMessage: response.data.message });
           this.handleShow();
         } else {
-          //console.log('boa, não ha mensagem de erro, podemos avançar');
+          console.log('boa, não ha mensagem de erro, podemos avançar');
 
           //console.log('username', stateNomeUser);
           //console.log('typeUsers_id', statetypeUser);
