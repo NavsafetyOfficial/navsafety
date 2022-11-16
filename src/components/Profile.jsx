@@ -65,7 +65,7 @@ class Profile extends Component {
         if (profileUserImg === "null") {
             profileUser = "../imgs/icones/user4.jpg";
         } else {
-            
+            console.log(profileUserImg);
             profileUser = profileUserImg;
             //profileUser="http://geo-navsafety.ua.pt/imgs/users/fundoazul.png"
 
