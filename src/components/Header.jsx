@@ -22,7 +22,7 @@ class Header extends Component {
         return (
             <Row className="m-0 App-header">
                 <Col xs={3} sm={2} md={2} lg={2}>
-                    <img src={logo} className="App-logo" alt="logo" />
+                    <NavLink to="/"><img src={logo} className="App-logo" alt="logo" /></NavLink>
                 </Col>
                 <Col className="titlePageCol d-flex align-items-center justify-content-center" xs={6} sm={8} md={8} lg={8}>
                     <span id="titlePage">{text}</span>
