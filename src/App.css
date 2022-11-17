@@ -414,6 +414,8 @@ body {
     height: 15vh;
     width: 15vh;
     margin: auto;
+    padding-left: 0;
+    padding-right: 0;
     border-radius: 50%;
     border-style: solid;
     border-width: 3px;
@@ -645,7 +647,14 @@ body {
 }
 
 .modalLogout {
-    z-index: 300000;
+    z-index: 300000!important;
+}
+.modal {
+    top: 13vh!important;
+    z-index: 300000!important;
+}
+.modal-backdrop{
+    z-index:100000!important;
 }
 
 .borderNormal {
@@ -796,9 +805,7 @@ body {
     text-align: initial;
 }
 
-.modal {
-    top: 13vh;
-}
+
 
 .text-center {
     display: block;

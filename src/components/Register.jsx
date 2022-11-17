@@ -298,7 +298,7 @@ class Register extends Component {
                 </Col>
               </Form.Group>
               {/* Botoes Login e Registo */}
-              <Row className="text-center">
+              <Row className="text-center mb-3">
                 <Button
                   className="btnLogin specialBtnLogin ms-auto me-auto"
                   variant="outline-primary"

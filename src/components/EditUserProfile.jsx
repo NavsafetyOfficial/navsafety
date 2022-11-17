@@ -316,8 +316,8 @@ class EditUserProfile extends Component {
             <Row className="pt-2">
               <img
                 id="perfilEdit"
-                // src={profileUserImg}
-                src={fakeUser}
+                src={profileUserImg}
+                //src={fakeUser}
                 className={this.state.classBorder}
               />
             </Row>
