@@ -14,6 +14,8 @@ import logo from "../imgs/logo/logo.png";
 import envelope from "../imgs/icones/envelope.png";
 import password from "../imgs/icones/password.png";
 import axios from "axios";
+import {checkSession} from "../functions/checkSession";
+
 
 class Login extends Component {
   constructor(props) {
@@ -26,16 +28,7 @@ class Login extends Component {
       errorMessage: "",
     };
   }
-  checkSession() {
-    const cookieUser = localStorage.getItem("username");
-    /*console.log('username',cookieUser);*/
-    if (cookieUser) {
-      console.log("Existe sessão aberta - redirecionar");
-      window.location.href = "/";
-    } else {
-      console.log("Não existe sessão aberta");
-    }
-  }
+  
   handleClose() {
     //console.log('Fechar Modal');
     this.setState({ showModalErr: false });
@@ -93,8 +86,8 @@ class Login extends Component {
   }
 
   render() {
-    this.checkSession();
 
+    checkSession("login");
     return (
       <div
         id="containerBackground"

@@ -9,6 +9,7 @@ import userPic from "../imgs/icones/user.png";
 import {} from "react-bootstrap";
 import axios from "axios";
 import { QuestionCircleFill } from "react-bootstrap-icons";
+import { checkSession } from "../functions/checkSession";
 
 const divStyle = {
   fontSize: "0.9rem",
@@ -38,16 +39,7 @@ class Register extends Component {
       errorMessage: "",
     };
   }
-  checkSession() {
-    const cookieUser = localStorage.getItem("username");
-    /*console.log('username',cookieUser);*/
-    if (cookieUser) {
-      console.log("Existe sessão aberta - redirecionar");
-      window.location.href = "/";
-    } else {
-      console.log("Não existe sessão aberta");
-    }
-  }
+  
   handleSubmit(e) {
     e.preventDefault();
 
@@ -150,7 +142,7 @@ class Register extends Component {
 
   render() {
     //verificar se já existe sessão
-    this.checkSession();
+    checkSession("register");
     return (
       <div
         id="containerBackground"

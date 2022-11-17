@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import { Col, Row } from "react-bootstrap";
 import Profile from './Profile';
 import "bootstrap/dist/css/bootstrap.min.css";
+import {checkSession} from "../functions/checkSession"
 
 
 
@@ -15,6 +16,7 @@ class Header extends Component {
     }
     
     render() {
+        checkSession("Home");
         let pageName="Home";
         let text=this.props.pageName;
         let name=text.split("/");
