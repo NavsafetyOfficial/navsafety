@@ -720,10 +720,9 @@ body {
 }
 
 
-/* .row {
-    padding-left: 30px;
-    padding-right: 30px;
-} */
+.row {
+    margin: 0!important;
+}
 
 .iconsLogin {
     width: 20px;

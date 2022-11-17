@@ -220,11 +220,7 @@ class InfoGeral_Tides extends Component {
       { SDATA: "2022-10-31 12:50", ALT: 1.2 },
       { SDATA: "2022-10-31 19:15", ALT: 2.7 },
     ];
-    ////console.log(data);
-    
     const obj = data; 
-    ////console.log(obj);
-
     var result = [];
 
     for (var i in obj) {
@@ -233,25 +229,15 @@ class InfoGeral_Tides extends Component {
       let sDataObj = obj[i].SDATA;
       let altObj;
       if (this.state.stateReferencial == "NMM") {
-        //console.log("NMM");
         altObj = obj[i].ALT;
       } else {
-        //console.log("NMM");
         altObj = obj[i].ALT - 2;
-        /*altObj=altObj.toFixed(2);
-        altObj = parseFloat(altObj);*/
       }
 
       altObj = altObj.toFixed(2);
       altObj = parseFloat(altObj);
 
       let hoursDataObj = sDataObj.split(" ");
-
-    //   //console.log("---" + i + "-----");
-    //   //console.log("sdata: " + sDataObj);
-    //   //console.log("hour:" + hoursDataObj[1]);
-    //   //console.log("alt: " + altObj);
-    //   //console.log(obj.length);
 
       this.state.arrayDataGraph.push([hoursDataObj[1], altObj]);
 
@@ -292,8 +278,8 @@ class InfoGeral_Tides extends Component {
     } else {
       this.setState({ firstTideMin: true });
       //primeiro valor É MINIMO
-      this.setState({ valor1Min: this.state.arrayDataGraph[1][1] });
-      this.setState({ hora1Min: this.state.arrayDataGraph[1][0] });
+      this.setState({ valor1Min: this.state.arrayDataGraph[1][1]});
+      this.setState({ hora1Min: this.state.arrayDataGraph[1][0]});
 
       //segundo valor É MAXIMO
       this.setState({ valor1Max: this.state.arrayDataGraph[2][1] });

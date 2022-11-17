@@ -124,15 +124,18 @@ class InfoGeral_Waves extends Component {
         return (
             <div className="maincontainer mainContainerInfo" style={divStyle}>
                 <Container>
-                    <Row className="pt-3">
+                    {/* btn back */}
+                    <Row className="m-0 pt-3">
                         <Button id="backBtnInfoGeral" className="voltarBtn" href={
                 this.state.city == "Figueira"
                   ? "/figueiraFoz"
                   : "/ericeira"
               }></Button>
                     </Row>
-                    <Row className="SubTitles pt-3 valueInfo">{this.state.arrayChosenDay[this.state.chosenDay]}</Row>
-                    <Row className='pe-0 pt-2 sliderContainer'>
+                    {/* Chosen Day title */}
+                    <Row className="m-0 SubTitles pt-3 valueInfo">{this.state.arrayChosenDay[this.state.chosenDay]}</Row>
+                    {/* Slider */}
+                    <Row className='m-0 pt-2 sliderContainer'>
                         <Form className='sliderContainer'>
                             <Form.Group controlId="formBasicRange ">
                                 <Form.Label className='sliderText pb-2'>Use the slider to see waves info for the next days</Form.Label>
@@ -144,20 +147,15 @@ class InfoGeral_Waves extends Component {
                             </Form.Group>
                         </Form>
                     </Row>
-                    {/*<Row>
-                        <Col className='p-0'>
-                            <img src={barra3_text}/>
-                        </Col>
-                    </Row>*/}
-                    <Row className="sliderText">
+                    <Row className="sliderText pt-2">
                         <Col className='slider3Legenda1'>Today</Col>
                         <Col className='slider3Legenda2'>+1</Col>
                         <Col className='slider3Legenda3'>+2</Col>
                     </Row>
                     <Row> <img src={loading} style={showDiv}/></Row>
                     <div style={showDivInfo}>
-                    <Row className="SubTitles pt-2">Waves Height</Row>
-                    <Row className='pe-0'>
+                    <Row className="m-0 SubTitles pt-2">Waves Height</Row>
+                    <Row className='m-0 pe-0'>
                         <Col className='ps-0 pt-2' xs={12} sm={5} md={5}>
                             <img className="iconInfo" src={waveMedia}/>
                             <span className="valueInfo ps-2">{this.state.dataLocal.totalSeaMin} m</span>
@@ -169,14 +167,14 @@ class InfoGeral_Waves extends Component {
                             <span className="extraText ps-2">(Higher wave)</span>
                         </Col>
                     </Row>
-                    <Row className="SubTitles pt-3">Waves Direction</Row>
-                    <Row className='pe-0 pt-2'>
+                    <Row className="m-0 SubTitles pt-3">Waves Direction</Row>
+                    <Row className='m-0 pe-0 pt-2'>
                         <Col xs={12} className="ps-0">
                         <img className="iconInfo" src={direction}/><span className="valueInfo ps-2">{this.state.dataLocal.predWaveDir}</span>
                         </Col>
                     </Row>
-                    <Row className="SubTitles pt-3">Waves Period</Row>
-                    <Row className='pe-0 pb-3'>
+                    <Row className="m-0 SubTitles pt-3">Waves Period</Row>
+                    <Row className='m-0 pe-0 pb-3'>
                         <Col className='ps-0 pt-2' xs={12} sm={5} md={5}>
                             <img className="iconInfo" src={chronometerMin}/>
                             <span className="valueInfo ps-2">{this.state.dataLocal.wavePeriodMin} s</span>
@@ -188,7 +186,7 @@ class InfoGeral_Waves extends Component {
                             <span className="extraText ps-2">(Maximum)</span>
                         </Col>
                     </Row>
-                    <Row className="pt-3 pb-3">
+                    <Row className="pt-3 pb-3 m-0 ">
                             <span className="sliderText">Source:  IPMA </span>
                     </Row>
                     </div>

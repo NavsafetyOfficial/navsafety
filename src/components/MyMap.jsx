@@ -111,7 +111,6 @@ const MyMap = (props) => {
 
   const style = (feature) => {
     // console.log(feature);
-    console.log(colorbrewer.RdYlGn[11]);
     let profundidade = feature.properties.Z;
 
     let colorPalette;
@@ -138,8 +137,6 @@ const MyMap = (props) => {
     } else if (profundidade >= -3) {
       colorPalette = 1;
     }
-    console.log(profundidade, "--", colorPalette);
-
     return {
       opacity: 1,
       fillOpacity: 0.7,
